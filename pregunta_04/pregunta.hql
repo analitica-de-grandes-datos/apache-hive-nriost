@@ -44,8 +44,8 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 /*
     >>> Escriba su respuesta a partir de este punto <<<
 */
-ROP TABLE IF EXISTS tbl0;
-CREATE TABLE tbl0 (
+DROP TABLE IF EXISTS tb10;
+CREATE TABLE tb10 (
     c1 INT,
     c2 STRING,
     c3 INT,
@@ -73,9 +73,8 @@ COLLECTION ITEMS TERMINATED BY ':'
 MAP KEYS TERMINATED BY '#'
 LINES TERMINATED BY '\n';
 LOAD DATA LOCAL INPATH 'tbl1.csv' INTO TABLE tbl1;
---
--- >>> Escriba su respuesta a partir de este punto <<<
---
+
+
 DROP TABLE IF EXISTS DATOS;
 CREATE TABLE DATOS  AS
 SELECT EXPLODE(c5) AS letras from tbl0;
