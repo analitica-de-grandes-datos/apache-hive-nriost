@@ -32,14 +32,17 @@ LOAD DATA LOCAL INPATH 'data.tsv' INTO TABLE t0;
 /*
     >>> Escriba su respuesta a partir de este punto <<<
 */
-INSERT OVERWRITE DIRECTORY 'output/'
+
+INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-STORED AS TEXTFILE
+
+
 
 SELECT c2, clave, count(clave)
 FROM t0
  LATERAL VIEW
- explode(c2) t0 As c2
- LATERAL VIEW
  explode(c3) t0 AS clave, valor
+ LATERAL VIEW
+ explode(c2) t0 As c2
+
  group by c2, clave; 
