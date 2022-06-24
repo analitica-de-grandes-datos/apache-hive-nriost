@@ -6,23 +6,24 @@ from os.path import dirname
 module_path = dirname(__file__)
 os.chdir(module_path)
 
+
 expected = [
-    "A:E:C:D",
-    "A:C",
-    "B:D",
-    "A:C:E:B:D",
-    "D:E:C",
-    "A:D",
-    "A:E:D",
-    "D:A:C:E",
-    "B:A:C:E",
-    "C:D:E:A:B",
+    "aaa,13",
+    "bbb,16",
+    "ccc,23",
+    "ddd,23",
+    "eee,15",
+    "fff,20",
+    "ggg,13",
+    "hhh,16",
+    "iii,18",
+    "jjj,18",
 ]
 
 if os.path.isdir("output"):
     os.system("rm -rf output")
 
-os.system("docker run -v $PWD:/workspace jdvelasq/hive:classroom")
+os.system("docker run -v $PWD:/workspace jdvelasq/pig:classroom")
 
 assert os.path.isdir("output") is True
 
