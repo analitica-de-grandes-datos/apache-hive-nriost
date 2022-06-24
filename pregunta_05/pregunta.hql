@@ -10,8 +10,6 @@ Apache Hive se ejecutará en modo local (sin HDFS).
 
 Escriba el resultado a la carpeta `output` de directorio de trabajo.
 
-
-    >>> Escriba su respuesta a partir de este punto <<<
 */
 DROP TABLE IF EXISTS tbl0;
 CREATE TABLE tbl0 (
@@ -28,7 +26,7 @@ COLLECTION ITEMS TERMINATED BY ':'
 MAP KEYS TERMINATED BY '#'
 LINES TERMINATED BY '\n';
 LOAD DATA LOCAL INPATH 'data0.csv' INTO TABLE tbl0;
---
+
 DROP TABLE IF EXISTS tbl1;
 CREATE TABLE tbl1 (
     c1 INT,
@@ -43,13 +41,7 @@ MAP KEYS TERMINATED BY '#'
 LINES TERMINATED BY '\n';
 LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 
-DROP TABLE IF EXISTS DATOS;
-create table DATOS as 
-select SUBSTR (c4,1,4) as YEAR, myc5 from tbl0
-lateral view explode (c5) tbl0 as myc5;
-
-INSERT OVERWRITE DIRECTORY 'output/'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-select YEAR, myc5, count(1) as conteo from DATOS
-group by YEAR, myc5;
+/*
+    >>> Escriba su respuesta a partir de este punto <<<
+*/
 

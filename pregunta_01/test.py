@@ -7,16 +7,17 @@ module_path = dirname(__file__)
 os.chdir(module_path)
 
 expected = [
-    "B,6",
-    "C,2",
-    "D,5",
-    "E,2",
+    "A,12",
+    "B,10",
+    "C,4",
+    "D,1",
+    "E,13",
 ]
 
 if os.path.isdir("output"):
     os.system("rm -rf output")
 
-os.system("docker run -v $PWD:/workspace jdvelasq/pig:classroom")
+os.system("docker run -v $PWD:/workspace jdvelasq/hive:classroom")
 
 assert os.path.isdir("output") is True
 

@@ -6,13 +6,18 @@ from os.path import dirname
 module_path = dirname(__file__)
 os.chdir(module_path)
 
-
-expected = ["1", "2", "3", "4", "5"]
+expected = [
+    "5",
+    "6",
+    "7",
+    "10",
+    "11",
+]
 
 if os.path.isdir("output"):
     os.system("rm -rf output")
 
-os.system("docker run -v $PWD:/workspace jdvelasq/pig:classroom")
+os.system("docker run -v $PWD:/workspace jdvelasq/hive:classroom")
 
 assert os.path.isdir("output") is True
 
