@@ -9,7 +9,7 @@ calcule la suma de todos los valores asociados a las claves en la columna
 
 Apache Hive se ejecutará en modo local (sin HDFS).
 
-Escriba el resultado a la carpeta `output` de directorio de trabajo.
+Escriba el resultado a la carpeta `output` de directorio de trabajo
 
 */
 
