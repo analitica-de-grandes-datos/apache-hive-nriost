@@ -9,7 +9,7 @@ calcule la suma de todos los valores asociados a las claves en la columna
 
 Apache Hive se ejecutará en modo local (sin HDFS).
 
-Escriba el resultado a la carpeta `output` de directorio de trabajo.
+Escriba el resultado a la carpeta `output` de directorio de trabajo
 
 */
 
@@ -46,4 +46,13 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 /*
     >>> Escriba su respuesta a partir de este punto <<<
 */
+DROP TABLE IF EXISTS DATOS;
+create table DATOS as 
+select c2, unal.key, unal.value  from tbl0
+lateral view explode(c6) unal As key, value;
+
+INSERT OVERWRITE DIRECTORY 'output/'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+select c2, SUM(value) from DATOS
+GROUP BY c2;
 

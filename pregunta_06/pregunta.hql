@@ -13,6 +13,7 @@ Escriba el resultado a la carpeta `output` de directorio de trabajo.
 */
 
 DROP TABLE IF EXISTS tbl0;
+
 CREATE TABLE tbl0 (
     c1 INT,
     c2 STRING,
@@ -21,6 +22,7 @@ CREATE TABLE tbl0 (
     c5 ARRAY<CHAR(1)>, 
     c6 MAP<STRING, INT>
 )
+
 ROW FORMAT DELIMITED 
 FIELDS TERMINATED BY ','
 COLLECTION ITEMS TERMINATED BY ':'
@@ -42,7 +44,8 @@ MAP KEYS TERMINATED BY '#'
 LINES TERMINATED BY '\n';
 LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 
-/*
-    >>> Escriba su respuesta a partir de este punto <<<
-*/
+INSERT OVERWRITE LOCAL DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT UPPER(CONCAT_WS(':',c5))
+FROM tbl0;
 
